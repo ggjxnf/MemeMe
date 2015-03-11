@@ -21,7 +21,12 @@
                                 <items>
                                     <barButtonItem title="Pick" id="V1k-0S-GfP">
                                         <connections>
-                                            <action selector="pickAnImage:" destination="vXZ-lx-hvc" id="9Fz-6x-31J"/>
+                                            <action selector="pickAnImageFromAlbum:" destination="vXZ-lx-hvc" id="6ut-wm-HJf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="camera" id="wfF-O9-An0">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="vXZ-lx-hvc" id="0AU-jb-eQy"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -42,6 +47,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="wfF-O9-An0" id="Lz9-Vd-GpI"/>
                         <outlet property="imageView" destination="3Z9-WY-M7t" id="wuU-Ik-Q1O"/>
                     </connections>
                 </viewController>
