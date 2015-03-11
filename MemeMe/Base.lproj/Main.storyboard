@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -31,24 +32,50 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Z9-WY-M7t">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Z9-WY-M7t">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F0c-Op-K7C">
+                                <rect key="frame" x="16" y="50" width="568" height="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="1tg-Pf-Lu2"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tcF-Cd-9MM">
+                                <rect key="frame" x="16" y="509" width="568" height="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="ATU-6V-FwE"/>
+                                </connections>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FA9-By-Yh6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="9Un-3C-Dxe"/>
                             <constraint firstItem="3Z9-WY-M7t" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Cb8-g5-Cx5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="F0c-Op-K7C" secondAttribute="trailing" id="Ecz-6H-FQ2"/>
                             <constraint firstItem="FA9-By-Yh6" firstAttribute="top" secondItem="3Z9-WY-M7t" secondAttribute="bottom" id="IZM-QQ-9JE"/>
                             <constraint firstAttribute="trailing" secondItem="FA9-By-Yh6" secondAttribute="trailing" id="Rs4-kB-ru9"/>
+                            <constraint firstItem="tcF-Cd-9MM" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Uyl-ZC-OzU"/>
                             <constraint firstItem="3Z9-WY-M7t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="gkq-Qf-yBI"/>
                             <constraint firstAttribute="trailing" secondItem="3Z9-WY-M7t" secondAttribute="trailing" id="jiS-jc-Vj7"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="FA9-By-Yh6" secondAttribute="bottom" id="l6f-Cv-Hwa"/>
+                            <constraint firstItem="FA9-By-Yh6" firstAttribute="top" secondItem="tcF-Cd-9MM" secondAttribute="bottom" constant="30" id="qbv-Ue-6cW"/>
+                            <constraint firstItem="F0c-Op-K7C" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="rm9-tS-XLq"/>
+                            <constraint firstItem="tcF-Cd-9MM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="z1s-To-hio"/>
+                            <constraint firstItem="F0c-Op-K7C" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="zdM-7V-Rzh"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomTextField" destination="tcF-Cd-9MM" id="jvI-kQ-vgp"/>
                         <outlet property="cameraButton" destination="wfF-O9-An0" id="Lz9-Vd-GpI"/>
                         <outlet property="imageView" destination="3Z9-WY-M7t" id="wuU-Ik-Q1O"/>
+                        <outlet property="topTextField" destination="F0c-Op-K7C" id="m5c-IC-k6i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
