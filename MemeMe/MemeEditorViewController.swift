@@ -15,6 +15,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
+    weak var currentTextField: UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -74,10 +76,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if textField.text == "TOP" || textField.text == "BOTTOM" {
             textField.text = ""
         }
+        currentTextField = textField
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        currentTextField = nil
         return true
     }
     
@@ -88,11 +92,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func keyboardWillShow(notification: NSNotification) {
+        if currentTextField != nil && currentTextField! == topTextField {
+            return
+        }
         self.view.frame.origin.y -= getKeyboardHeight(notification)
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y += getKeyboardHeight(notification)
+        self.view.frame.origin.y = 0 // getKeyboardHeight(notification)
     }
     
     func subscribeToKeyboardNotifications() {
