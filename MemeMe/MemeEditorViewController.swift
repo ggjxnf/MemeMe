@@ -124,6 +124,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func save() {
         var meme = Meme( topText: topTextField.text!, bottomText: bottomTextField.text!, image:
             imageView.image!, memedImage: generateMemedImage())
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     func generateMemedImage() -> UIImage
@@ -148,9 +151,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         var activityViewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
         activityViewController.completionWithItemsHandler = {activityType, completed, returnedItems, activityError in
             if completed {
-                self.save()
+                //self.save()
             }
+            self.save()
             self.dismissViewControllerAnimated(true, nil)
+            self.performSegueWithIdentifier("showSentMemes", sender: self)
         }
         self.presentViewController(activityViewController, animated: true, completion: nil)
     }

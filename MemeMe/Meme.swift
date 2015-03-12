@@ -14,4 +14,8 @@ struct Meme {
     let bottomText: String
     let image: UIImage
     let memedImage: UIImage
+    
+    var text: String {
+        return "\(topText) \(bottomText)"
+    }
 }
