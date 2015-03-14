@@ -36,6 +36,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.bottomTextField.textAlignment = .Center
     }
     
+    deinit {
+        println("editor vc deinit")
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
@@ -151,9 +155,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         var activityViewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
         activityViewController.completionWithItemsHandler = {activityType, completed, returnedItems, activityError in
             if completed {
-                //self.save()
+                self.save()
             }
-            self.save()
             self.dismissViewControllerAnimated(true, nil)
             self.performSegueWithIdentifier("showSentMemes", sender: self)
         }
