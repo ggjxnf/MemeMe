@@ -100,5 +100,14 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController.isKindOfClass(MemeViewController) {
+            let dvc = segue.destinationViewController as MemeViewController
+            if let path = self.collectionView?.indexPathsForSelectedItems().first? as? NSIndexPath {
+                dvc.meme = memes[path.row]
+            }
+        }
+    }
 
 }
